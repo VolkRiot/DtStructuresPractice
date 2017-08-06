@@ -64,9 +64,7 @@ function List() {
   };
 
   const next = () => {
-    if (pos < listSize - 1) {
-      pos++;
-    }
+    pos++;
   };
 
   const currPos = () => pos;
@@ -98,11 +96,13 @@ function List() {
   };
 }
 
-var names = List();
-names.append('Cynthia');
-names.append('Raymond');
-names.append('Barbara');
+module.exports = List;
 
-console.log(names.toString());
-names.remove('Raymond');
-console.log(names.toString());
+// var names = List();
+// names.append('Cynthia');
+// names.append('Raymond');
+// names.append('Barbara');
+//
+// console.log(names.toString());
+// names.remove('Raymond');
+// console.log(names.toString());
