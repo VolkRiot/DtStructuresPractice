@@ -5,8 +5,7 @@ function List() {
 
   const clear = () => {
     dataStore = [];
-    listSize = 0;
-    pos = 0;
+    listSize = pos = 0;
   };
 
   const append = val => {
@@ -34,15 +33,51 @@ function List() {
     return false;
   };
 
-  const length = () => {
-    return listSize;
+  const length = () => listSize;
+
+  const toString = () => dataStore;
+
+  const insert = (elm, after) => {
+    const location = find(after);
+    if (location > -1) {
+      dataStore.splice(location++, 0, elm);
+      --listSize;
+      return true;
+    }
+    return false;
   };
 
-  const toString = () => {
-    // I know tehnically not a string but a useful view
-    // Can be cast to String() is so wish
-    return dataStore;
+  const contains = elm => (find(elm) !== -1 ? true : false);
+
+  const front = () => {
+    pos = 0;
   };
+
+  const end = () => {
+    pos = listSize - 1;
+  };
+
+  const prev = () => {
+    if (pos > 0) {
+      --pos;
+    }
+  };
+
+  const next = () => {
+    if (pos < listSize - 1) {
+      pos++;
+    }
+  };
+
+  const currPos = () => pos;
+
+  const moveTo = position => {
+    if (position > -1 && position < listSize) {
+      pos = position;
+    }
+  };
+
+  const getElement = () => dataStore[pos];
 
   return {
     clear,
@@ -50,7 +85,16 @@ function List() {
     find,
     remove,
     length,
-    toString
+    toString,
+    insert,
+    contains,
+    front,
+    end,
+    prev,
+    next,
+    currPos,
+    moveTo,
+    getElement
   };
 }
 
