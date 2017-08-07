@@ -59,13 +59,71 @@ function Person(nmn, gndr) {
 
   const getName = () => name;
   const getGender = () => gender;
+  const showPerson = () => {
+    console.log(`Name: ${name}\nGender: ${gender}\n\n`);
+  };
 
   return {
     getName,
-    getGender
+    getGender,
+    showPerson
   };
 }
 
 const newMan /* Lol get it! */ = Person('Newman', 'male');
 
-console.log(newMan.getName());
+const personList = List();
+
+let names = [
+  'Misha',
+  'Crystal',
+  'David',
+  'Flavio',
+  'Dima',
+  'Rima',
+  'Alla',
+  'Ryan',
+  'Sarah',
+  'Michelle'
+];
+let gender = [
+  'male',
+  'female',
+  'male',
+  'male',
+  'male',
+  'female',
+  'female',
+  'male',
+  'female',
+  'female'
+];
+
+personList.clear();
+personList.front();
+
+for (let p = 0; p < 10; p++) {
+  personList.append(
+    Person(
+      names[Math.floor(Math.random() * names.length)],
+      Math.floor(Math.random() * 2) === 0 ? 'male' : 'female'
+    )
+  );
+}
+
+function allOfGender(gndr, list) {
+  const gender = typeof gndr === 'string' ? String(gndr.trim()) : null;
+  let final = [];
+  if (gender !== 'male' && gender !== 'female') {
+    return [];
+  } else {
+    for (let i = 0; i < list.length(); i++) {
+      if (list.getElement().getGender() === gender) {
+        list.getElement().showPerson();
+      }
+      list.next();
+    }
+  }
+}
+
+allOfGender('female', personList);
