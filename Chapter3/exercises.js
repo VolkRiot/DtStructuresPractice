@@ -47,3 +47,25 @@ newList.insertIfSmallest = function(elm) {
 newList.insertIfSmallest(-1);
 
 console.log(newList.toString());
+
+/* Create a Person class that stores a person’s name and their gender. Create a
+list of at least 10 Person objects. Write a function that displays all the
+people in the list of the same gender. */
+
+function Person(nmn, gndr) {
+  // We are more than just our names and genders JS exercise, but ok...
+  const name = nmn;
+  const gender = gndr;
+
+  const getName = () => name;
+  const getGender = () => gender;
+
+  return {
+    getName,
+    getGender
+  };
+}
+
+const newMan /* Lol get it! */ = Person('Newman', 'male');
+
+console.log(newMan.getName());
