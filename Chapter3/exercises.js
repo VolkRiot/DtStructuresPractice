@@ -15,7 +15,7 @@ newList.insertIfGreatest = function(elm) {
   this.front();
 
   while (this.currPos() < this.length()) {
-    if (this.getElement() > elm) {
+    if (this.getElement() >= elm) {
       return;
     }
     this.next();
@@ -24,6 +24,26 @@ newList.insertIfGreatest = function(elm) {
   this.append(elm);
 };
 
-newList.insertIfGreatest(3);
+newList.insertIfGreatest(25);
+
+console.log(newList.toString());
+
+/* 2. Write a function that inserts an element into a list only if the element
+to be inserted is smaller than any of the elements currently in the list. */
+
+newList.insertIfSmallest = function(elm) {
+  this.front();
+
+  while (this.currPos() < this.length()) {
+    if (this.getElement() <= elm) {
+      return;
+    }
+    this.next();
+  }
+
+  this.append(elm);
+};
+
+newList.insertIfSmallest(-1);
 
 console.log(newList.toString());
