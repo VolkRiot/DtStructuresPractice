@@ -37,6 +37,7 @@ function LList() {
     while (currNode.next !== null && currNode.next.elm !== item) {
       currNode = currNode.next;
     }
+    return currNode;
   }
 
   function remove(item) {
@@ -50,12 +51,17 @@ function LList() {
     find,
     insert,
     display,
-    findprev
+    findprev,
+    remove
   };
 }
 
-let cities = LList();
+var cities = LList();
 cities.insert('Conway', 'head');
 cities.insert('Russellville', 'Conway');
-cities.insert('Alma', 'Russellville');
+cities.insert('Carlisle', 'Russellville');
+cities.insert('Alma', 'Carlisle');
+cities.display();
+console.log();
+cities.remove('Carlisle');
 cities.display();
