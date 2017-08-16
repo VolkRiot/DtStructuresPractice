@@ -32,10 +32,25 @@ function LList() {
     }
   }
 
+  function findprev(item) {
+    let currNode = head;
+    while (currNode.next !== null && currNode.next.elm !== item) {
+      currNode = currNode.next;
+    }
+  }
+
+  function remove(item) {
+    let prev = findprev(item);
+    if (prev.next !== null) {
+      prev.next = prev.next.next;
+    }
+  }
+
   return {
     find,
     insert,
-    display
+    display,
+    findprev
   };
 }
 
