@@ -32,7 +32,8 @@ function DoublyLList() {
     const prevNode = toRemove.prev;
     prevNode.next = toRemove.next;
     toRemove.next.prev = prevNode;
-    delete toRemove;
+    delete toRemove.next;
+    delete toRemove.prev;
   }
 
   function findLast() {
@@ -67,3 +68,13 @@ function DoublyLList() {
     display
   };
 }
+
+var cities = DoublyLList();
+cities.insert('Conway', 'head');
+cities.insert('Russellville', 'Conway');
+cities.insert('Carlisle', 'Russellville');
+cities.insert('Alma', 'Carlisle');
+cities.display();
+cities.remove('Carlisle');
+cities.display();
+cities.dispReverse();
