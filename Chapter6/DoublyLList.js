@@ -8,6 +8,7 @@ function Node(elm) {
 
 function DoublyLList() {
   const head = Node('head');
+  let current = head;
 
   function insert(newElement, item) {
     var newNode = Node(newElement);
@@ -59,13 +60,38 @@ function DoublyLList() {
     }
   }
 
+  function advance(n) {
+    for (let i = 0; i < n; i++) {
+      current = current.next;
+      if (current === null) {
+        break;
+      }
+    }
+    return current;
+  }
+
+  function back(n) {
+    for (let i = 0; i < n; i++) {
+      current = current.prev;
+      if (current === null) {
+        break;
+      }
+    }
+    return current;
+  }
+
+  function show() {
+    return current.elm;
+  }
+
   return {
     insert,
     find,
     remove,
     findLast,
     dispReverse,
-    display
+    display,
+    advance
   };
 }
 
