@@ -48,4 +48,4 @@ pbook.add('Cynthia', '456');
 console.log("David's extension: " + pbook.find('David'));
 pbook.remove('David');
 pbook.showAll();
-console.log(`Number if entries ${pbook.getCount()}`);
+console.log(`Number of entries ${pbook.getCount()}`);
