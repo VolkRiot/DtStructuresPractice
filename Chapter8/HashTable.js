@@ -1,18 +1,28 @@
 function HashTable() {
-  var table = new Array(137)
+  var table = new Array(137);
 
-  function simpleHash(data) {
+  // Simple Hash
+  // function simpleHash(data) {
+  //   return data.split('').reduce((acc, val) => {
+  //     acc += val.charCodeAt();
+  //     return acc;
+  //   }, 0) % table.length;
+  // }
 
-    return data.split('').reduce((acc, val) => {
-      acc += val.charCodeAt();
-      return acc;
-    }, 0) % table.length;
-
+  // Horner's method
+  function betterHash(string) {
+    const H = 37;
+    return (
+      +string.split('').reduce((acc, val) => {
+        acc += H * acc + val.charCodeAt();
+        return acc;
+      }, 0) % table.length
+    );
   }
 
   function put(data) {
-    let pos = simpleHash(data);
-    table[pos] = data
+    let pos = betterHash(data);
+    table[pos] = data;
   }
 
   function showDistro() {
@@ -22,19 +32,29 @@ function HashTable() {
   }
 
   return {
-    simpleHash,
+    betterHash,
     put,
     showDistro
-  }
-
+  };
 }
 
-var someNames = ["David", "Jennifer", "Donnie", "Raymond",
-"Cynthia", "Mike", "Clayton", "Danny", "Jonathan"];
+var someNames = [
+  'David',
+  'Dave',
+  'Jennifer',
+  'Donnie',
+  'Raymond',
+  'Cynthia',
+  'Mike',
+  'Clayton',
+  'Danny',
+  'Dan',
+  'Jonathan'
+];
 
 var hTable = HashTable();
 
-someNames.forEach((elm) => {
+someNames.forEach(elm => {
   hTable.put(elm);
 });
 
