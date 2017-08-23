@@ -1,6 +1,10 @@
 function HashTable() {
   var table = new Array(137);
 
+  for (let i = 0; i < table.length; i++) {
+    table[i] = [];
+  }
+
   // Horner's method
   function betterHash(string) {
     const H = 37;
@@ -12,23 +16,17 @@ function HashTable() {
     );
   }
 
-  function buildChains() {
-    for (let i = 0; i < table.lengh; i++) {
-      table[i] = [];
-    }
-  }
-
   function put(key, data) {
     let i = 0;
     let pos = betterHash(key);
-    console.log('This thing', table[pos]);
+
     if (!table[pos]) {
       table[pos].push(key, data);
     } else {
       while (table[pos][i] !== undefined) {
         i++;
       }
-      table[pos][i].push(key, data);
+      table[pos].push(key, data);
     }
   }
 
@@ -47,19 +45,15 @@ function HashTable() {
     });
   }
 
-  buildChains();
-
   return {
     betterHash,
     put,
     showDistro,
-    get,
-    buildChains
+    get
   };
 }
 
-var hTable = HashTable();
-hTable.buildChains();
+var hTable = new HashTable();
 var someNames = [
   'David',
   'Jennifer',
