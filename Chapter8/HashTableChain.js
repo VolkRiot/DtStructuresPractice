@@ -34,7 +34,7 @@ function HashTable() {
     const pos = betterHash(key);
     let i = 0;
     while (table[pos][i] && table[pos][i] !== key) {
-      i++;
+      i += 2;
     }
     return table[pos][i + 1];
   }
